@@ -4,14 +4,20 @@ public class bomb extends Actor
     
     public void act()
     {
-        move(-15);
+        move(-8);
         
         if(getX() <= 0)
         {
             resetBomb();
         }
+        
+        if(isTouching(Hero.class))
+        {
+            Potato potato = new Potato();
+            getWorld().removeObject(sadFace,300, 200);
+            getWorld().removeObject(this);
+        }
     }
-    
     public void resetBomb()
     {
         int x = Greenfoot.getRandomNumber(2);
